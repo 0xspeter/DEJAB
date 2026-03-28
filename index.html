@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>加盟招募 | 花蓮第一家烤肉串 官方加盟計畫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fire:#E84B1A;
+  --ember:#C43A10;
+  --gold:#C9952A;
+  --gold-light:#E8B84B;
+  --charcoal:#111009;
+  --ash:#1C1A14;
+  --smoke:#272218;
+  --border:rgba(201,149,42,0.18);
+  --cream:#F4ECD5;
+  --muted:rgba(244,236,213,0.55);
+  --dim:rgba(244,236,213,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:var(--charcoal);
+  color:var(--cream);
+  overflow-x:hidden;
+}
+
+/* ═══ NOISE OVERLAY ═══ */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.4;
+}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 56px;
+  background:rgba(17,16,9,0.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px);
+}
+.logo{
+  font-family:'Noto Serif TC',serif;
+  font-size:1.25rem;font-weight:900;color:var(--gold);
+  letter-spacing:.08em;text-decoration:none;
+}
+.logo em{color:var(--fire);font-style:normal;}
+.nav-right{display:flex;align-items:center;gap:32px;}
+.nav-link{
+  color:var(--muted);font-size:.82rem;letter-spacing:.1em;
+  text-decoration:none;transition:color .2s;
+}
+.nav-link:hover{color:var(--cream);}
+.nav-tel{
+  font-size:.85rem;letter-spacing:.05em;
+  color:var(--gold);font-weight:500;text-decoration:none;
+}
+
+/* ═══ HERO ═══ */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  position:relative;overflow:hidden;
+  padding:0 56px;
+  gap:0;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 80% 50%,rgba(232,75,26,.22) 0%,transparent 65%),
+    radial-gradient(ellipse 30% 50% at 15% 20%,rgba(201,149,42,.1) 0%,transparent 55%);
+}
+.hero-bg-img{
+  position:absolute;right:0;top:0;width:52%;height:100%;
+  background:url('images/img_1.png') center/cover;
+  mask-image:linear-gradient(to left, rgba(0,0,0,.7) 40%, transparent 100%);
+  -webkit-mask-image:linear-gradient(to left, rgba(0,0,0,.7) 40%, transparent 100%);
+  filter:brightness(.45) saturate(1.3);
+}
+.hero-left{
+  position:relative;z-index:2;
+  padding:140px 0 80px;
+  max-width:580px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.72rem;letter-spacing:.3em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:28px;
+  opacity:0;animation:slideIn .8s .1s ease forwards;
+}
+.hero-eyebrow::before{
+  content:'';width:32px;height:1px;background:var(--gold);
+}
+.hero-h1{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(3rem,5.5vw,5.2rem);
+  font-weight:900;line-height:1.08;
+  color:var(--cream);
+  margin-bottom:28px;
+  opacity:0;animation:slideIn .9s .2s ease forwards;
+}
+.hero-h1 .red{color:var(--fire);}
+.hero-h1 .gold{color:var(--gold-light);}
+.hero-desc{
+  font-size:1.05rem;color:var(--muted);line-height:1.85;
+  margin-bottom:48px;
+  opacity:0;animation:slideIn .9s .3s ease forwards;
+}
+.hero-ctas{
+  display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:slideIn .9s .4s ease forwards;
+}
+.cta-fire{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--fire);color:#fff;
+  padding:16px 36px;font-size:.95rem;letter-spacing:.1em;
+  text-decoration:none;font-family:'Noto Sans TC';
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition:background .2s,transform .15s;
+}
+.cta-fire:hover{background:var(--ember);transform:translateY(-2px);}
+.cta-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--gold);color:var(--gold);
+  padding:15px 32px;font-size:.95rem;letter-spacing:.1em;
+  text-decoration:none;font-family:'Noto Sans TC';
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition:background .2s,transform .15s;
+}
+.cta-ghost:hover{background:rgba(201,149,42,.1);transform:translateY(-2px);}
+
+/* hero stat bar */
+.hero-stats{
+  display:flex;gap:48px;margin-top:64px;
+  padding-top:40px;border-top:1px solid var(--border);
+  opacity:0;animation:slideIn .9s .5s ease forwards;
+}
+.hstat-num{
+  font-family:'Noto Serif TC',serif;
+  font-size:2.2rem;font-weight:900;color:var(--fire);
+  line-height:1;
+}
+.hstat-label{font-size:.75rem;color:var(--dim);letter-spacing:.1em;margin-top:6px;}
+
+/* ═══ SECTION COMMON ═══ */
+.wrap{max-width:1160px;margin:0 auto;padding:0 56px;}
+.sec{padding:100px 0;}
+.sec-tag{
+  font-size:.72rem;letter-spacing:.3em;color:var(--gold);
+  text-transform:uppercase;display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;
+}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--gold);}
+.sec-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;
+  color:var(--cream);line-height:1.15;margin-bottom:16px;
+}
+.sec-title .accent{color:var(--fire);}
+.rule{
+  width:48px;height:3px;margin-bottom:48px;
+  background:linear-gradient(90deg,var(--fire),var(--gold));
+}
+
+/* ═══ WHY US ═══ */
+#why{background:var(--ash);}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;
+  margin-top:64px;
+}
+.why-card{
+  background:var(--smoke);padding:44px 40px;
+  position:relative;overflow:hidden;
+  transition:transform .25s;
+}
+.why-card:hover{transform:translateY(-4px);}
+.why-card::after{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:0;
+  background:linear-gradient(to bottom,var(--fire),var(--gold));
+  transition:height .4s ease;
+}
+.why-card:hover::after{height:100%;}
+.why-num{
+  font-family:'Noto Serif TC',serif;
+  font-size:4rem;font-weight:900;color:rgba(232,75,26,.1);
+  line-height:1;margin-bottom:20px;letter-spacing:-.05em;
+}
+.why-card h3{
+  font-family:'Noto Serif TC',serif;
+  font-size:1.25rem;color:var(--gold-light);margin-bottom:14px;
+}
+.why-card p{font-size:.9rem;color:var(--muted);line-height:1.85;}
+
+/* ═══ REVENUE ═══ */
+#revenue{position:relative;overflow:hidden;}
+#revenue::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(232,75,26,.07),transparent 70%);
+  pointer-events:none;
+}
+.rev-layout{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;
+}
+.rev-text p{font-size:.95rem;color:var(--muted);line-height:1.9;margin-bottom:20px;}
+.rev-cards{display:flex;flex-direction:column;gap:3px;}
+.rev-card{
+  background:var(--ash);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 36px;
+  border-left:3px solid transparent;
+  transition:border-color .25s,background .25s;
+}
+.rev-card:hover{border-left-color:var(--fire);background:var(--smoke);}
+.rev-card-label{
+  font-size:.82rem;letter-spacing:.1em;color:var(--muted);
+  display:block;margin-bottom:6px;
+}
+.rev-card-val{
+  font-family:'Noto Serif TC',serif;
+  font-size:1.6rem;font-weight:900;color:var(--gold-light);
+}
+.rev-card-val span{font-size:.85rem;color:var(--muted);margin-left:4px;}
+.rev-card-icon{font-size:2rem;opacity:.5;}
+.rev-note{
+  margin-top:24px;
+  background:rgba(201,149,42,.08);
+  border:1px solid rgba(201,149,42,.2);
+  padding:20px 24px;
+  font-size:.83rem;color:var(--muted);line-height:1.75;
+}
+.rev-note strong{color:var(--gold-light);}
+
+/* ═══ PLANS ═══ */
+#plans{background:var(--ash);}
+.plans-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;
+  margin-top:64px;
+}
+.plan-card{
+  background:var(--smoke);
+  position:relative;overflow:hidden;
+  transition:transform .3s;
+}
+.plan-card:hover{transform:translateY(-6px);}
+.plan-header{
+  padding:44px 44px 32px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.plan-featured .plan-header{
+  background:linear-gradient(135deg,rgba(232,75,26,.12),transparent);
+}
+.plan-badge{
+  display:inline-block;font-size:.68rem;letter-spacing:.2em;
+  background:var(--fire);color:#fff;padding:4px 12px;
+  margin-bottom:20px;
+}
+.plan-badge.gold-badge{background:var(--gold);}
+.plan-type{font-size:.75rem;letter-spacing:.25em;color:var(--muted);margin-bottom:8px;}
+.plan-name{
+  font-family:'Noto Serif TC',serif;
+  font-size:1.8rem;font-weight:900;color:var(--cream);margin-bottom:20px;
+}
+.plan-price{
+  font-family:'Noto Serif TC',serif;
+  font-size:3.2rem;font-weight:900;color:var(--fire);line-height:1;
+}
+.plan-price small{font-size:1.1rem;color:var(--muted);}
+.plan-price sub{font-size:1rem;color:var(--muted);vertical-align:bottom;}
+.plan-body{padding:36px 44px 44px;}
+.plan-desc{
+  font-size:.88rem;color:var(--muted);line-height:1.85;margin-bottom:28px;
+}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px;}
+.plan-features li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.88rem;color:rgba(244,236,213,.75);
+  line-height:1.6;
+}
+.plan-features li::before{
+  content:'✓';color:var(--gold);font-weight:700;
+  flex-shrink:0;margin-top:1px;
+}
+.plan-cta{
+  display:block;text-align:center;
+  background:var(--fire);color:#fff;
+  padding:16px;font-size:.92rem;letter-spacing:.12em;
+  text-decoration:none;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:background .2s;
+}
+.plan-cta:hover{background:var(--ember);}
+.plan-cta.ghost-cta{
+  background:transparent;border:1px solid var(--gold);
+  color:var(--gold);
+}
+.plan-cta.ghost-cta:hover{background:rgba(201,149,42,.1);}
+
+/* ═══ EQUIPMENT ═══ */
+#equip{position:relative;}
+.equip-intro{
+  max-width:640px;
+  font-size:.95rem;color:var(--muted);line-height:1.9;margin-bottom:72px;
+}
+.equip-sections{display:flex;flex-direction:column;gap:3px;}
+.equip-section{
+  background:var(--ash);
+  display:grid;grid-template-columns:240px 1fr;
+  overflow:hidden;
+  transition:background .25s;
+}
+.equip-section:hover{background:var(--smoke);}
+.equip-section-label{
+  background:rgba(232,75,26,.08);
+  padding:36px 32px;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  border-right:1px solid var(--border);
+}
+.equip-section-num{
+  font-family:'Noto Serif TC',serif;
+  font-size:2.8rem;font-weight:900;
+  color:rgba(232,75,26,.2);line-height:1;margin-bottom:12px;
+}
+.equip-section-title{
+  font-size:.8rem;letter-spacing:.15em;color:var(--gold);
+}
+.equip-items{
+  padding:36px 40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;
+}
+.equip-item{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.87rem;color:rgba(244,236,213,.72);line-height:1.65;
+}
+.equip-item::before{
+  content:'◆';font-size:.5rem;color:var(--gold);
+  flex-shrink:0;margin-top:5px;
+}
+
+/* ═══ SUPPORT ═══ */
+#support{background:var(--ash);}
+.support-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
+  margin-top:64px;
+}
+.support-card{
+  background:var(--smoke);padding:48px 36px;
+  position:relative;overflow:hidden;
+  transition:transform .25s;
+}
+.support-card:hover{transform:translateY(-4px);}
+.support-card::before{
+  content:'';position:absolute;bottom:0;left:0;
+  width:100%;height:3px;
+  background:linear-gradient(90deg,var(--fire),var(--gold));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.support-card:hover::before{transform:scaleX(1);}
+.support-icon{font-size:2.6rem;margin-bottom:24px;display:block;}
+.support-card h3{
+  font-family:'Noto Serif TC',serif;
+  font-size:1.2rem;color:var(--gold-light);margin-bottom:16px;
+}
+.support-card p{font-size:.88rem;color:var(--muted);line-height:1.85;}
+
+/* ═══ CONTACT ═══ */
+#contact{
+  position:relative;overflow:hidden;
+  background:var(--charcoal);padding:120px 0;
+}
+#contact::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 30% 50%,rgba(232,75,26,.14),transparent 65%),
+    radial-gradient(ellipse 40% 60% at 80% 30%,rgba(201,149,42,.08),transparent 60%);
+  pointer-events:none;
+}
+.contact-layout{
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-left p{
+  font-size:.95rem;color:var(--muted);line-height:1.9;margin-bottom:40px;
+}
+.contact-info{display:flex;flex-direction:column;gap:20px;align-items:center;}
+.contact-row{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 24px;
+  background:var(--ash);
+  border-left:3px solid var(--fire);
+}
+.contact-row-icon{font-size:1.4rem;flex-shrink:0;}
+.contact-row-label{font-size:.72rem;letter-spacing:.15em;color:var(--dim);margin-bottom:4px;}
+.contact-row-val{font-size:1rem;color:var(--cream);font-weight:500;}
+.contact-row-val a{color:var(--gold-light);text-decoration:none;}
+.contact-right{
+  background:var(--ash);
+  border:1px solid var(--border);
+  padding:48px 44px;
+  position:relative;z-index:1;
+}
+.contact-right h3{
+  font-family:'Noto Serif TC',serif;
+  font-size:1.5rem;color:var(--cream);margin-bottom:8px;
+}
+.contact-right p{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:32px;}
+.form-group{margin-bottom:20px;}
+.form-label{
+  display:block;font-size:.75rem;letter-spacing:.15em;
+  color:var(--gold);margin-bottom:8px;
+}
+.form-input{
+  width:100%;background:var(--smoke);
+  border:1px solid rgba(201,149,42,.2);
+  color:var(--cream);font-family:'Noto Sans TC';font-size:.9rem;
+  padding:14px 18px;outline:none;
+  transition:border-color .2s;
+}
+.form-input:focus{border-color:var(--gold);}
+.form-input::placeholder{color:var(--dim);}
+textarea.form-input{height:100px;resize:vertical;}
+.form-submit{
+  width:100%;background:var(--fire);color:#fff;
+  border:none;padding:18px;font-family:'Noto Sans TC';
+  font-size:.95rem;letter-spacing:.15em;cursor:pointer;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:background .2s;
+}
+.form-submit:hover{background:var(--ember);}
+
+/* ═══ FOOTER ═══ */
+footer{
+  background:var(--ash);
+  border-top:1px solid var(--border);
+  padding:40px 56px;
+}
+.footer-inner{
+  max-width:1160px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-logo{font-family:'Noto Serif TC',serif;font-size:1.1rem;font-weight:900;color:var(--gold);}
+.footer-logo em{color:var(--fire);font-style:normal;}
+.footer-copy{font-size:.78rem;color:var(--dim);}
+.footer-tel a{color:var(--gold-light);text-decoration:none;font-size:.88rem;letter-spacing:.05em;}
+
+/* ═══ FLOATING CTA ═══ */
+.float-cta{
+  position:fixed;bottom:32px;right:32px;z-index:300;
+  background:var(--fire);color:#fff;
+  padding:14px 28px;font-size:.88rem;letter-spacing:.1em;
+  text-decoration:none;font-family:'Noto Sans TC';
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  box-shadow:0 8px 32px rgba(232,75,26,.4);
+  transition:background .2s,transform .2s;
+  display:flex;align-items:center;gap:8px;
+}
+.float-cta:hover{background:var(--ember);transform:translateY(-3px);}
+
+/* ═══ REVEAL ═══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes slideIn{
+  from{opacity:0;transform:translateX(-20px);}
+  to{opacity:1;transform:translateX(0);}
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  nav{padding:14px 24px;}
+  #hero{grid-template-columns:1fr;padding:0 24px;}
+  .hero-bg-img{display:none;}
+  .hero-left{padding:120px 0 60px;}
+  .wrap{padding:0 24px;}
+  .why-grid,.plans-grid,.contact-layout,.rev-layout{grid-template-columns:1fr;}
+  .support-grid{grid-template-columns:1fr;}
+  .equip-section{grid-template-columns:1fr;}
+  .equip-section-label{border-right:none;border-bottom:1px solid var(--border);}
+  .equip-items{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center;}
+  .float-cta{bottom:20px;right:20px;font-size:.8rem;padding:12px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING CTA -->
+<a href="tel:0988356551" class="float-cta">📞 立即洽詢加盟</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo"><em>第一家</em>烤肉串 · 加盟招募</a>
+  <div class="nav-right">
+    <a href="#plans" class="nav-link">加盟方案</a>
+    <a href="#equip" class="nav-link">設備清單</a>
+    <a href="#support" class="nav-link">總部支援</a>
+    <a href="tel:0988356551" class="nav-tel">☎ 0988-356-551</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-left">
+    <p class="hero-eyebrow">官方加盟招募計畫</p>
+    <h1 class="hero-h1">
+      傳承<span class="gold">花蓮炭火</span><br>
+      打造<span class="red">百萬名店</span><br>
+      的最後機會
+    </h1>
+    <p class="hero-desc">
+      不是路邊攤、不是流動攤販——<br>
+      我們給你的，是一間做得長久、做得穩健的<strong style="color:var(--cream)">正規餐飲品牌</strong>。
+    </p>
+    <div class="hero-ctas">
+      <a href="#plans" class="cta-fire">查看加盟方案 →</a>
+      <a href="#contact" class="cta-ghost">索取詳細資料</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hstat-num">$30,000</div>
+        <div class="hstat-label">假日單日最高營收</div>
+      </div>
+      <div>
+        <div class="hstat-num">30+</div>
+        <div class="hstat-label">年品牌深耕花蓮</div>
+      </div>
+      <div>
+        <div class="hstat-num">2</div>
+        <div class="hstat-label">彈性加盟方案</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div id="why">
+  <div class="wrap sec reveal">
+    <p class="sec-tag">壹、為什麼選擇我們</p>
+    <h2 class="sec-title">不只是路邊攤<br>而是<span class="accent">正規餐飲品牌</span></h2>
+    <div class="rule"></div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>成熟技術 · 可複製的成功模型</h3>
+        <p>擁有三十年炭火烤肉技術積累與穩定的客源模型，加盟即可複製成功經驗，讓您創業少走彎路，快速進入穩定獲利軌道。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>設備齊備 · 拿鑰匙就能做生意</h3>
+        <p>從強大的冷凍設備到專業的油煙處理系統，所有核心生財器具一次到位。不需事後追加採購，投入預算清晰透明。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>長久穩健 · 做得好做得久</h3>
+        <p>告別看天吃飯的流動攤販！店面級規劃讓您在法規、衛生、動線上都符合標準，打造一間可以長期經營、穩健成長的名店。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3>花蓮第一 · 品牌光環加持</h3>
+        <p>東大門夜市發跡、花蓮排隊名店的金字招牌，讓您的新店從開業第一天就享有品牌信任度，無需從零累積口碑。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div style="width:100%;height:420px;overflow:hidden;position:relative;">
+  <img src="images/img_2.png" alt="第一家烤肉串 炭火烤肉" style="width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.2);">
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(17,16,9,.8) 0%,transparent 50%,rgba(17,16,9,.8) 100%);display:flex;align-items:center;justify-content:center;">
+    <div style="text-align:center;">
+      <p style="font-size:.75rem;letter-spacing:.3em;color:#C9952A;margin-bottom:12px;">SINCE 1989</p>
+      <h2 style="font-family:'Noto Serif TC',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;color:#F4ECD5;line-height:1.2;">東大門夜市排隊名店<br><span style="color:#E84B1A;">現在換您來經營</span></h2>
+    </div>
+  </div>
+</div>
+
+<!-- REVENUE -->
+<div id="revenue">
+  <div class="wrap sec reveal">
+    <p class="sec-tag">貳、獲利分析</p>
+    <h2 class="sec-title">看得到的<span class="accent">真金白銀</span></h2>
+    <div class="rule"></div>
+    <div class="rev-layout">
+      <div class="rev-text">
+        <p>根據現有門市的實際營運數據推算，只要跟著總部的腳步執行，高營收並非空談。</p>
+        <p>花蓮每逢假日與旅遊旺季，人流量遠超日常，強勁的觀光客群加上在地忠實粉絲，造就了串燒店極高的翻單率。</p>
+        <div class="rev-note">
+          ⚠️ <strong>重要提醒：</strong>以上數字為參考推估值，實際業績依店面位置、經營投入及市場狀況而異。我們建議您到訪現有門市親身了解，再做決策。
+        </div>
+      </div>
+      <div class="rev-cards">
+        <div class="rev-card">
+          <div>
+            <span class="rev-card-label">平日單日營收預估</span>
+            <div class="rev-card-val">$15,000 <span>～</span> $20,000<span>元</span></div>
+          </div>
+          <div class="rev-card-icon">☀️</div>
+        </div>
+        <div class="rev-card">
+          <div>
+            <span class="rev-card-label">假日單日營收預估</span>
+            <div class="rev-card-val">$20,000 <span>～</span> $30,000<span>元</span></div>
+          </div>
+          <div class="rev-card-icon">🎉</div>
+        </div>
+        <div class="rev-card">
+          <div>
+            <span class="rev-card-label">月營收潛力</span>
+            <div class="rev-card-val">現金流強勁<span>・回本速度快</span></div>
+          </div>
+          <div class="rev-card-icon">📈</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLANS -->
+<div id="plans" style="background:var(--ash);">
+  <div class="wrap sec reveal">
+    <p class="sec-tag">加盟方案</p>
+    <h2 class="sec-title">選擇最適合您的<span class="accent">創業模式</span></h2>
+    <div class="rule"></div>
+    <div class="plans-grid">
+      <!-- 外帶型 -->
+      <div class="plan-card">
+        <div style="height:180px;overflow:hidden;"><img src="images/img_3.png" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.6);"></div><div class="plan-header">
+          <span class="plan-badge">精簡高效</span>
+          <p class="plan-type">TAKEOUT MODEL · 外帶型</p>
+          <h3 class="plan-name">外帶型加盟</h3>
+          <div class="plan-price">
+            <small>NT$</small>150<small>萬</small>
+          </div>
+        </div>
+        <div class="plan-body">
+          <p class="plan-desc">小坪數、低成本的靈活創業模式，適合商圈、夜市周邊、住宅區等人流密集地點。不需大店面，快速開業、快速回本。</p>
+          <ul class="plan-features">
+            <li>10～20坪小店面即可開業</li>
+            <li>電話預訂 + 現場外帶雙動線</li>
+            <li>完整核心烤台與冷鏈設備</li>
+            <li>品牌招牌與點餐展示台</li>
+            <li>全套技術教育訓練</li>
+            <li>總部動線規劃設計協助</li>
+            <li>穩定原物料統一供應</li>
+            <li>適合個人或夫妻共同創業</li>
+          </ul>
+          <a href="tel:0988356551" class="plan-cta ghost-cta">來電洽詢 → 0988-356-551</a>
+        </div>
+      </div>
+      <!-- 內用型 -->
+      <div class="plan-card plan-featured">
+        <div style="height:180px;overflow:hidden;"><img src="images/img_4.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.6);"></div><div class="plan-header">
+          <span class="plan-badge gold-badge">完整店型</span>
+          <p class="plan-type">DINE-IN MODEL · 內用型</p>
+          <h3 class="plan-name">內用型加盟</h3>
+          <div class="plan-price">
+            <small>NT$</small>250<small>萬</small>
+          </div>
+        </div>
+        <div class="plan-body">
+          <p class="plan-desc">完整餐廳型態，提供顧客舒適的內用環境，同時保有外帶服務。適合幹道一樓黃金店面，品牌形象最完整。</p>
+          <ul class="plan-features">
+            <li>30～60坪標準內用空間規劃</li>
+            <li>內用外帶雙軌並行最大化收益</li>
+            <li>專業烤台、烤爐全套設備</li>
+            <li>不鏽鋼煙罩 + 強力抽風 + 靜電機</li>
+            <li>歐式展示冰櫃 + 四門上凍下藏冰箱</li>
+            <li>四門冷藏冰箱 + 專屬工作台</li>
+            <li>品牌大招牌 + 完整店面設計輸出</li>
+            <li>全套SOP教育訓練課程</li>
+          </ul>
+          <a href="tel:0988356551" class="plan-cta">立即來電洽詢加盟</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP 2 -->
+<div style="width:100%;height:320px;overflow:hidden;position:relative;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:100%;">
+    <img src="images/img_5.png" alt="烤肉特寫" style="width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.2);">
+    <img src="images/img_6.png" alt="炭火串燒" style="width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.2);">
+    <img src="images/img_7.png" alt="醬汁烤肉串" style="width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.2);">
+  </div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(17,16,9,.35);">
+    <p style="font-family:'Noto Serif TC',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:#F4ECD5;text-align:center;letter-spacing:.1em;">200萬設備・一次到位・拿鑰匙就能做生意</p>
+  </div>
+</div>
+
+<!-- EQUIPMENT -->
+<div id="equip" style="position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background-image:url('images/img_8.png');background-size:cover;background-position:center top;opacity:0.06;pointer-events:none;z-index:0;"></div>
+  <div class="wrap sec reveal" style="position:relative;z-index:1;">
+    <p class="sec-tag">參、200萬開店專案</p>
+    <h2 class="sec-title">設備<span class="accent">一次到位</span></h2>
+    <div class="rule"></div>
+    <p class="equip-intro">我們不玩文字遊戲，不需您事後再追加採購。加盟金包含以下全套生財器具，讓您拿到鑰匙就能做生意。</p>
+    <div class="equip-sections">
+      <div class="equip-section">
+        <div class="equip-section-label">
+          <div class="equip-section-num">01</div>
+          <div class="equip-section-title">核心作業區<br>賺錢的核心</div>
+        </div>
+        <div class="equip-items">
+          <div class="equip-item">專業烤台 &amp; 烤爐｜專為炭火燒烤設計，耐用且火力均勻</div>
+          <div class="equip-item">不鏽鋼煙罩｜高效導引油煙，避免烤焦氣滯留</div>
+          <div class="equip-item">強力抽風機｜強力排煙，符合環保法規，鄰居不抗議</div>
+          <div class="equip-item">靜電機｜高規格油煙處理設備，開店必備標配</div>
+        </div>
+      </div>
+      <div class="equip-section">
+        <div class="equip-section-label">
+          <div class="equip-section-num">02</div>
+          <div class="equip-section-title">冷鏈保存系統<br>食材新鮮的關鍵</div>
+        </div>
+        <div class="equip-items">
+          <div class="equip-item">歐式展示冰櫃｜明亮吸睛，食材擺放整齊，吸引路過客</div>
+          <div class="equip-item">四門上凍下藏冰箱｜兼具冷凍庫存與冷藏備料功能</div>
+          <div class="equip-item">四門冷藏冰箱｜大容量儲存，應對假日大量備貨需求</div>
+          <div class="equip-item">食材保鮮規範｜SOP標準化流程，確保品質一致</div>
+        </div>
+      </div>
+      <div class="equip-section">
+        <div class="equip-section-label">
+          <div class="equip-section-num">03</div>
+          <div class="equip-section-title">門面與動線硬體<br>吸睛的關鍵</div>
+        </div>
+        <div class="equip-items">
+          <div class="equip-item">專屬櫃台 &amp; 工作台｜不鏽鋼材質，衛生好清理</div>
+          <div class="equip-item">品牌大招牌｜醒目設計，打造在地地標</div>
+          <div class="equip-item">展示台｜優化點餐流程，讓客人夾得開心、買得多</div>
+          <div class="equip-item">動線規劃設計｜總部協助內外場最佳化佈局</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORT -->
+<div id="support" style="background:var(--ash);">
+  <div class="wrap sec reveal">
+    <p class="sec-tag">肆、總部三大強力後援</p>
+    <h2 class="sec-title">加盟不只買設備<br>更買我們的<span class="accent">經驗與 Know-how</span></h2>
+    <div class="rule"></div>
+    <div class="support-grid">
+      <div class="support-card"><div style="height:160px;overflow:hidden;margin:-48px -36px 24px;"><img src="images/img_9.png" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.2);"></div><span class="support-icon">📚</span>
+        <h3>完整教育訓練</h3>
+        <p>從生食處理、醃製秘方到炭火掌控技術，無保留技術轉移，確保每一串烤肉都有總店的靈魂。即使沒有餐飲經驗，也能快速上手。</p>
+      </div>
+      <div class="support-card"><div style="height:160px;overflow:hidden;margin:-48px -36px 24px;"><img src="images/img_10.png" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.2);"></div><span class="support-icon">📐</span>
+        <h3>專業動線設計</h3>
+        <p>根據您的店面格局，規劃最順手的「內場動線」與最吸金的「外場點餐區」，提升出餐效率，讓顧客體驗更流暢、翻桌率更高。</p>
+      </div>
+      <div class="support-card"><div style="height:160px;overflow:hidden;margin:-48px -36px 24px;"><img src="images/img_11.png" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.2);"></div><span class="support-icon">🏭</span>
+        <h3>穩定原物料供應</h3>
+        <p>統一採購、統一醃製，確保每家加盟店品質穩定一致。不僅降低您的採購成本，更省去備料的繁瑣時間，讓您專注在服務顧客。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="wrap sec reveal">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <p class="sec-tag">伍、成為夥伴</p>
+        <h2 class="sec-title">現在，就是<br>加入的<span class="accent">最佳時機</span></h2>
+        <div class="rule"></div>
+        <p>如果您擁有經營店面的決心，且準備好投入這份飄香的事業，歡迎直接聯繫我們。總部將安排您親訪門市、深入了解實際營運狀況，再做最終決定。</p>
+        <div class="contact-info">
+          <div class="contact-row">
+            <div class="contact-row-icon">📞</div>
+            <div>
+              <div class="contact-row-label">加盟專線</div>
+              <div class="contact-row-val"><a href="tel:0988356551">0988-356-551</a></div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">📍</div>
+            <div>
+              <div class="contact-row-label">洽詢地址</div>
+              <div class="contact-row-val">花蓮市國聯二路150號</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">💬</div>
+            <div>
+              <div class="contact-row-label">官方 LINE / 粉絲專頁</div>
+              <div class="contact-row-val" style="color:var(--muted);font-size:.88rem;">請來電後由專人提供</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><em>第一家</em>烤肉串 官方加盟</div>
+    <div class="footer-copy">花蓮市國聯二路150號 · 第一家烤肉串加盟總部 © 2025</div>
+    <div class="footer-tel"><a href="tel:0988356551">☎ 0988-356-551</a></div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+</script>
+</body>
+</html>
